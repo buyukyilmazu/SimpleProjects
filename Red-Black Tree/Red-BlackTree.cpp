@@ -1,6 +1,3 @@
-//	Ugur Buyukyilmaz
-//	040090560
-
 #include<iostream>
 #include<fstream>
 #include<string>
