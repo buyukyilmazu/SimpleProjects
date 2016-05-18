@@ -1,0 +1,32 @@
+diff -w -r -b -B /home/ugur/Belgeler/linux-3.13-original/arch/x86/syscalls/syscall_32.tbl /home/ugur/Belgeler/linux-3.13/arch/x86/syscalls/syscall_32.tbl
+359a360
+> 351     i386    project                 set_casper
+diff -w -r -b -B /home/ugur/Belgeler/linux-3.13-original/fs/proc/base.c /home/ugur/Belgeler/linux-3.13/fs/proc/base.c
+2901c2901,2908
+< 
+---
+> 		if(iter.task->casper==1 && 
+> 			!uid_eq(current->cred->uid, iter.task->cred->uid))
+> 			continue;
+> 		if(iter.task->casper==2 && 
+> 			!gid_eq(current->cred->gid, iter.task->cred->gid))
+> 			continue;
+> 		if(iter.task->casper==3)
+> 			continue;
+diff -w -r -b -B /home/ugur/Belgeler/linux-3.13-original/include/linux/init_task.h /home/ugur/Belgeler/linux-3.13/include/linux/init_task.h
+215a216
+> 	.casper = 0,							\
+diff -w -r -b -B /home/ugur/Belgeler/linux-3.13-original/include/linux/sched.h /home/ugur/Belgeler/linux-3.13/include/linux/sched.h
+1456a1457
+> 	int casper;
+diff -w -r -b -B /home/ugur/Belgeler/linux-3.13-original/include/linux/syscalls.h /home/ugur/Belgeler/linux-3.13/include/linux/syscalls.h
+849a850
+> asmlinkage long set_casper(pid_t pid, int value);
+diff -w -r -b -B /home/ugur/Belgeler/linux-3.13-original/Makefile /home/ugur/Belgeler/linux-3.13/Makefile
+528c528
+< core-y		:= usr/
+---
+> core-y		:= usr/	project/
+Only in /home/ugur/Belgeler/linux-3.13: project
+Only in /home/ugur/Belgeler/linux-3.13/security/tomoyo: builtin-policy.h
+Only in /home/ugur/Belgeler/linux-3.13/security/tomoyo: policy
