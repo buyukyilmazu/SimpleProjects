@@ -1,1 +1,1 @@
-# SimpleProjects
+# Small Projects
